@@ -1,5 +1,7 @@
 # import camera
 import spudemail
+import time
+
 
 def main():
 
@@ -7,11 +9,39 @@ def main():
 #         "aoppenheimer@gmail.com",
 #         "test",
 #         "this is a test email!")
-    recd = spudemail.getMail()
+
+
+    def restart(who):
+        return True # quit the program
     
-    for r in recd:
-        print('from: {0}   subj: {1}'.format(r['from'], r['subj']))
-        spudemail.sendMail(r['from'], 'regarding {0}'.format(r['subj']), 'thanks!')
+    def picture(who):
+        spudemail.sendMail(r['from'], 'your picture', 'thanks!')
+        return False
+
+
+
+    while(True):
+        print('fetching...')
+        recd = spudemail.getMail()
+    
+        quit=False
+        
+        doit = {'restart': restart,
+                'picture': picture
+                }
+
+        for r in recd:
+            print('from: {0}   subj: {1}'.format(r['from'], r['subj']))
+            
+            if r['subj'] in doit.keys():
+                quit = doit[r['subj']](r['from'])
+                
+            if quit:
+                return
+
+        print('sleeping...')
+        time.sleep(5)
+
 
 if __name__ == "__main__":
     main()

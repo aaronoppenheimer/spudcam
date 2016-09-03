@@ -73,6 +73,7 @@ def getMail():
             print 'From:{0}\nSubject:{1}'.format(messageFrom, messageSubj)
                                                 
     print('keys: {0}'.format(response.keys()))
+    server.delete_messages(response.keys())
 
     server.logout()
     return theMsgs
