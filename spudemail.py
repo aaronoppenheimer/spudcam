@@ -9,7 +9,7 @@ import email
 from imapclient import IMAPClient
 
 
-def sendMail(recipient, subject, message):
+def sendMail(recipient, subject, message, picture=None):
     """this is some test documentation in the function"""
 
     SECRET = getSecret()
@@ -23,14 +23,11 @@ def sendMail(recipient, subject, message):
     msg['Subject'] = subject
     msg.attach(MIMEText(message))
 
-
-    fp = open('pic.jpg', 'rb')
-    msgImage = MIMEImage(fp.read())
-    fp.close()
-
-    # Define the image's ID as referenced above
-    msgImage.add_header('Content-ID', 'pic')
-    msg.attach(msgImage)
+    if picture:
+        msgImage = getMailPicture(picture)
+        # Define the image's ID as referenced above
+        msgImage.add_header('Content-ID', 'pic')
+        msg.attach(msgImage)
 
     try:
         print('sending mail to ' + recipient + ' on ' + subject)
@@ -46,6 +43,12 @@ def sendMail(recipient, subject, message):
     except Exception as e:
         print(str(e))
  
+def getMailPicture(filename):
+    fp = open(filename, 'rb')
+    msgImage = MIMEImage(fp.read())
+    fp.close()
+
+    return msgImage
 
 def getMail():
 
@@ -55,13 +58,12 @@ def getMail():
     server = IMAPClient("imap.gmail.com", use_uid=True, ssl=True)
     server.login("spudwalks@gmail.com", SECRET)
 
-    select_info = server.select_folder('INBOX')
-    print('%d messages in INBOX' % select_info['EXISTS'])
+#     select_info = server.select_folder('INBOX')
+#     print('%d messages in INBOX' % select_info['EXISTS'])
+# 
+#     messages = server.search(['NOT', 'DELETED'])
+#     print("%d messages that aren't deleted" % len(messages))
 
-    messages = server.search(['NOT', 'DELETED'])
-    print("%d messages that aren't deleted" % len(messages))
-
-    print("Messages:")
     theMsgs = []
     response = server.fetch(messages, ['RFC822'])
     for messagegId,data in response.iteritems():
@@ -70,9 +72,7 @@ def getMail():
             messageFrom = msgStringParsed['From']
             messageSubj = msgStringParsed['Subject']
             theMsgs.append({'from':messageFrom, 'subj':messageSubj})
-            print 'From:{0}\nSubject:{1}'.format(messageFrom, messageSubj)
                                                 
-    print('keys: {0}'.format(response.keys()))
     server.delete_messages(response.keys())
 
     server.logout()

@@ -14,11 +14,13 @@ def main():
     def restart(who):
         return True # quit the program
     
-    def picture(who):
-        spudemail.sendMail(r['from'], 'your picture', 'thanks!')
+    def heartbeat(who):
+        spudemail.sendMail(r['from'], 'Heartbeat', 'Baboom!')
         return False
 
-
+    def picture(who):
+        spudemail.sendMail(r['from'], 'Picture', 'Baboom!', 'pic.jpg')
+        return False
 
     while(True):
         print('fetching...')
@@ -27,6 +29,7 @@ def main():
         quit=False
         
         doit = {'restart': restart,
+                'heartbeat': heartbeat,
                 'picture': picture
                 }
 
@@ -36,11 +39,11 @@ def main():
             if r['subj'] in doit.keys():
                 quit = doit[r['subj']](r['from'])
                 
-            if quit:
+            if quit: # anyone ask us to quit?
                 return
 
         print('sleeping...')
-        time.sleep(5)
+        time.sleep(10)
 
 
 if __name__ == "__main__":
