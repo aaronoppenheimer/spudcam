@@ -30,7 +30,7 @@ def sendMail(recipient, subject, message, picture=None):
         msg.attach(msgImage)
 
     try:
-        print('sending mail to ' + recipient + ' on ' + subject)
+        print('sending mail to ' + recipient + ' re: ' + subject)
 
         mailServer = smtplib.SMTP('smtp.gmail.com', 587)
         mailServer.ehlo()
