@@ -58,10 +58,10 @@ def getMail():
     server = IMAPClient("imap.gmail.com", use_uid=True, ssl=True)
     server.login("spudwalks@gmail.com", SECRET)
 
-#     select_info = server.select_folder('INBOX')
+    select_info = server.select_folder('INBOX')
 #     print('%d messages in INBOX' % select_info['EXISTS'])
 # 
-#     messages = server.search(['NOT', 'DELETED'])
+    messages = server.search(['NOT', 'DELETED'])
 #     print("%d messages that aren't deleted" % len(messages))
 
     theMsgs = []
