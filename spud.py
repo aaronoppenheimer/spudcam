@@ -5,10 +5,7 @@ import time
 
 def main():
 
-#     spudemail.sendMail(
-#         "aoppenheimer@gmail.com",
-#         "test",
-#         "this is a test email!")
+    spudemail.sendMail("aoppenheimer@gmail.com","started!","spud is up!")
 
 
     def restart(who):
