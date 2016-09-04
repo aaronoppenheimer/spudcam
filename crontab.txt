@@ -4,4 +4,4 @@ SHELL=/bin/bash
 MAILTO=aoppenheimer@gmail.com
 #
 # run every minute
-* * * * *       python $HOME/spudcam/camera.py >> $HOME/tmp/out 2>&1
+* * * * *       /usr/bin/python /home/pi/spudcam/camera.py >> $HOME/tmp/out 2>&1
