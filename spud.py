@@ -20,7 +20,7 @@ def main():
         return False
 
     while(True):
-        print('fetching...')
+        print('checking...')
         recd = spudemail.getMail()
     
         quit=False
@@ -39,7 +39,6 @@ def main():
             if quit: # anyone ask us to quit?
                 return
 
-        print('sleeping...')
         time.sleep(10)
 
 
