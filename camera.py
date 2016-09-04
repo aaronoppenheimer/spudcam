@@ -6,3 +6,7 @@ def takePicture(filename):
     camera.rotation = 180
     sleep(4)
     camera.capture(filename)
+
+
+if __name__ == "__main__":
+    takePicture("pic.jpg")
