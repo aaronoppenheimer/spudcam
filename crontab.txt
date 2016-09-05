@@ -3,5 +3,5 @@ SHELL=/bin/bash
 # mail any output to `paul', no matter whose crontab this is
 MAILTO=aoppenheimer@gmail.com
 #
-# run every minute
+# run every minute - spud picture!
 * * * * *       /usr/bin/python /home/pi/spudcam/camera.py
