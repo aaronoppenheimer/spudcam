@@ -16,7 +16,7 @@ def main():
         return False
 
     def picture(who):
-        spudemail.sendMail(r['from'], 'Picture', 'Baboom!', 'pic.jpg')
+        spudemail.sendMail(r['from'], 'Picture', 'Baboom!', '/tmp/pic.jpg')
         return False
 
     while(True):

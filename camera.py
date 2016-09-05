@@ -9,4 +9,4 @@ def takePicture(filename):
 
 
 if __name__ == "__main__":
-    takePicture("pic.jpg")
+    takePicture("/tmp/pic.jpg")
