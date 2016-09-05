@@ -2,10 +2,11 @@
 import spudemail
 import time
 
+VERSION = 1
 
 def main():
 
-    spudemail.sendMail("aoppenheimer@gmail.com","started!","spud is up!")
+    spudemail.sendMail("aoppenheimer@gmail.com","started!","spud is up! Version {0}".format(VERSION))
 
 
     def restart(who):
