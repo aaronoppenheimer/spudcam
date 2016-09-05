@@ -4,4 +4,6 @@ SHELL=/bin/bash
 MAILTO=aoppenheimer@gmail.com
 #
 # run every minute - spud picture!
-* * * * *       /usr/bin/python /home/pi/spudcam/camera.py
+* * * * *       /usr/bin/python /home/pi/spudcam/camera.py >/home/pi/spudcam/logs/cronlog 2>&1
+
+@reboot sh /home/pi/spudcam/launcher.sh >/home/pi/spudcam/logs/cronlog 2>&1
