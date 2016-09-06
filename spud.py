@@ -2,7 +2,7 @@
 import spudemail
 import time
 
-VERSION = 1
+VERSION = 2
 
 def main():
 
@@ -32,10 +32,12 @@ def main():
                 }
 
         for r in recd:
-            print('from: {0}   subj: {1}'.format(r['from'], r['subj']))
+            cmd = r['subj']
+            cmd = cmd.strip().lower()
+            print('from: {0}   subj: {1}'.format(r['from'], cmd))
             
-            if r['subj'] in doit.keys():
-                quit = doit[r['subj']](r['from'])
+            if cmd in doit.keys():
+                quit = doit[cmd](r['from'])
                 
             if quit: # anyone ask us to quit?
                 return
