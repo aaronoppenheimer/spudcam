@@ -1,13 +1,15 @@
 # import camera
 import spudemail
 import time
+import sys
+import datetime
 
-VERSION = 2
+VERSION = 3
 
 def main():
 
     spudemail.sendMail("aoppenheimer@gmail.com","started!","spud is up! Version {0}".format(VERSION))
-
+    print('started at {0}'.format(datetime.datetime.now()))
 
     def restart(who):
         print('restarting on command')
@@ -23,8 +25,11 @@ def main():
         return False
 
     while(True):
-        print('checking...')
-        recd = spudemail.getMail()
+        try:
+            recd = spudemail.getMail()
+        except:
+            print "Unexpected error:", sys.exc_info()[0]
+            recd=[]
     
         quit=False
         
