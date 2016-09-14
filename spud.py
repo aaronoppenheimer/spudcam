@@ -10,9 +10,11 @@ def main():
 
 
     def restart(who):
+        print('restarting on command')
         return True # quit the program
     
     def heartbeat(who):
+        print('heatbeating on command')
         spudemail.sendMail(r['from'], 'Heartbeat', 'Baboom!')
         return False
 
