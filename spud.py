@@ -21,10 +21,12 @@ def main():
         return False
 
     def picture(who):
+        print('sending picture on command')
         spudemail.sendMail(recipient=r['from'], subject='Picture', message='Baboom!', picture='/tmp/pic.jpg')
         return False
         
     def log(who):
+        print('sending log on command')
         spudemail.sendMail(recipient=r['from'], subject='Picture', message='Baboom!', file='/home/pi/spudcam/logs/runnerlog.txt')
 
     while(True):
