@@ -32,7 +32,7 @@ def sendMail(recipient, subject, message, picture=None, file=None):
     if file:
         with open(file, 'r') as theFile:
             msgLog=theFile.read()  
-        msg.attach(msgLog)      
+        msg.attach(MIMEText(msgLog))
 
     try:
         print('sending mail to ' + recipient + ' re: ' + subject)
