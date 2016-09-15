@@ -5,6 +5,7 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEImage import MIMEImage
 import email
+from log import logit
 
 from imapclient import IMAPClient
 
@@ -35,7 +36,7 @@ def sendMail(recipient, subject, message, picture=None, file=None):
         msg.attach(MIMEText(msgLog))
 
     try:
-        print('sending mail to ' + recipient + ' re: ' + subject)
+        logit('sending mail to ' + recipient + ' re: ' + subject)
 
         mailServer = smtplib.SMTP('smtp.gmail.com', 587)
         mailServer.ehlo()
@@ -46,7 +47,7 @@ def sendMail(recipient, subject, message, picture=None, file=None):
         mailServer.close()
 
     except Exception as e:
-        print(str(e))
+        logit(str(e))
  
 def getMailPicture(filename):
     fp = open(filename, 'rb')
