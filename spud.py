@@ -17,12 +17,15 @@ def main():
     
     def heartbeat(who):
         print('heatbeating on command')
-        spudemail.sendMail(r['from'], 'Heartbeat', 'Baboom!')
+        spudemail.sendMail(recipient=r['from'], subject='Heartbeat', message='Baboom!')
         return False
 
     def picture(who):
-        spudemail.sendMail(r['from'], 'Picture', 'Baboom!', '/tmp/pic.jpg')
+        spudemail.sendMail(recipient=r['from'], subject='Picture', message='Baboom!', picture='/tmp/pic.jpg')
         return False
+        
+    def log(who):
+        spudemail.sendMail(recipient=r['from'], subject='Picture', message='Baboom!', file='/home/pi/spudcam/logs/runnerlog.txt')
 
     while(True):
         try:
@@ -35,7 +38,8 @@ def main():
         
         doit = {'restart': restart,
                 'heartbeat': heartbeat,
-                'picture': picture
+                'picture': picture,
+                'log': log
                 }
 
         for r in recd:

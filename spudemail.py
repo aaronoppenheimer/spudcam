@@ -9,7 +9,7 @@ import email
 from imapclient import IMAPClient
 
 
-def sendMail(recipient, subject, message, picture=None):
+def sendMail(recipient, subject, message, picture=None, file=None):
     """this is some test documentation in the function"""
 
     SECRET = getSecret()
@@ -28,6 +28,11 @@ def sendMail(recipient, subject, message, picture=None):
         # Define the image's ID as referenced above
         msgImage.add_header('Content-ID', 'pic')
         msg.attach(msgImage)
+        
+    if file:
+        with open(file, 'r') as theFile:
+            msgLog=theFile.read()  
+        msg.attach(msgLog)      
 
     try:
         print('sending mail to ' + recipient + ' re: ' + subject)
