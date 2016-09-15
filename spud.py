@@ -4,7 +4,7 @@ import time
 import sys
 import datetime
 
-VERSION = 3
+VERSION = 4
 
 def main():
 
