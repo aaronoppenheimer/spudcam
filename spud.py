@@ -28,7 +28,7 @@ def main():
         
     def log(who):
         logit('sending log on command')
-        spudemail.sendMail(recipient=r['from'], subject='Picture', message='Baboom!', file='/home/pi/spudcam/logs/runnerlog.txt')
+        spudemail.sendMail(recipient=r['from'], subject='Picture', file='/home/pi/spudcam/logs/runnerlog.txt')
 
     while(True):
         try:

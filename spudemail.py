@@ -10,7 +10,7 @@ from log import logit
 from imapclient import IMAPClient
 
 
-def sendMail(recipient, subject, message, picture=None, file=None):
+def sendMail(recipient, subject, message=None, picture=None, file=None):
     """this is some test documentation in the function"""
 
     SECRET = getSecret()
@@ -22,7 +22,9 @@ def sendMail(recipient, subject, message, picture=None, file=None):
     msg['From'] = "spudwalks@gmail.com"
     msg['To'] = recipient
     msg['Subject'] = subject
-    msg.attach(MIMEText(message))
+    
+    if message:
+        msg.attach(MIMEText(message))
 
     if picture:
         msgImage = getMailPicture(picture)
