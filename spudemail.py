@@ -90,3 +90,12 @@ def getSecret():
     f = open('secret.txt')
     line = f.readline().strip()
     return line
+
+
+def main():
+    """ test the email connection """
+    sendMail('aoppenheimer@gmail.com','Email Test',"woo!")
+
+
+if __name__ == "__main__":
+    main()    
