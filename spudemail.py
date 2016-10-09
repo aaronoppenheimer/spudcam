@@ -89,6 +89,7 @@ def getMail():
 def getSecret():
     f = open('secret.txt')
     line = f.readline().strip()
+    f.close()
     return line
 
 
