@@ -9,17 +9,19 @@ from log import logit
 
 from imapclient import IMAPClient
 
+# username = "spudwalks@gmail.com"
+username = "spudwalks@comcast.net"
 
 def sendMail(recipient, subject, message=None, picture=None, file=None):
     """this is some test documentation in the function"""
 
-    SECRET = getSecret()
+    #SECRET = getSecret() # gmail version
+    SECRET = "1!{0}".format(getSecret()[:13])
 
-    username = "spudwalks@gmail.com"
     password = SECRET
 
     msg = MIMEMultipart()
-    msg['From'] = "spudwalks@gmail.com"
+    msg['From'] = username
     msg['To'] = recipient
     msg['Subject'] = subject
     
@@ -40,7 +42,8 @@ def sendMail(recipient, subject, message=None, picture=None, file=None):
     try:
         logit('sending mail to ' + recipient + ' re: ' + subject)
 
-        mailServer = smtplib.SMTP('smtp.gmail.com', 587)
+        # mailServer = smtplib.SMTP('smtp.gmail.com', 587)
+        mailServer = smtplib.SMTP('smtp.comcast.net', 587)
         mailServer.ehlo()
         mailServer.starttls()
         mailServer.ehlo()
@@ -60,11 +63,13 @@ def getMailPicture(filename):
 
 def getMail():
 
-    SECRET = getSecret()
+    # SECRET = getSecret()
+    SECRET = "1!{0}".format(getSecret()[:13])
 
 
-    server = IMAPClient("imap.gmail.com", use_uid=True, ssl=True)
-    server.login("spudwalks@gmail.com", SECRET)
+    # server = IMAPClient("imap.gmail.com", use_uid=True, ssl=True)
+    server = IMAPClient("imap.comcast.net", use_uid=True, ssl=True)
+    server.login(username, SECRET)
 
     select_info = server.select_folder('INBOX')
 #     print('%d messages in INBOX' % select_info['EXISTS'])
