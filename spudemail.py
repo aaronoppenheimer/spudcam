@@ -8,6 +8,7 @@ import email
 from log import logit
 
 from imapclient import IMAPClient
+from os.path import split as psplit
 
 # username = "spudwalks@gmail.com"
 username = "spudwalks@comcast.net"
@@ -32,6 +33,7 @@ def sendMail(recipient, subject, message=None, picture=None, file=None):
         msgImage = getMailPicture(picture)
         # Define the image's ID as referenced above
         msgImage.add_header('Content-ID', 'pic')
+        msgImage.add_header('Content-Disposition', 'attachment; filename="{0}"'.format(psplit(picture)[-1]))
         msg.attach(msgImage)
         
     if file:
