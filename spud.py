@@ -38,8 +38,8 @@ def main():
         temperature=int(line)/1000
         spudemail.sendMail(recipient=r['from'], subject='Spud Temp', message='Temperature:{0}'.format(temperature))
 
+    accession = 0
     while(True):
-        accession = 0
 
         try:
             recd = spudemail.getMail()
