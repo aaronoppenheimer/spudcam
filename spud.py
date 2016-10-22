@@ -39,6 +39,8 @@ def main():
         spudemail.sendMail(recipient=r['from'], subject='Spud Temp', message='Temperature:{0}'.format(temperature))
 
     while(True):
+        accession = 0
+
         try:
             recd = spudemail.getMail()
         except:
@@ -57,7 +59,8 @@ def main():
         for r in recd:
             cmd = r['subj']
             cmd = cmd.strip().lower()
-            logit('from: {0}   subj: {1}'.format(r['from'], cmd))
+            accession = accession + 1
+            logit('{0} from: {1}   subj: {2}'.format(accession, r['from'], cmd))
             
             if cmd in doit.keys():
                 quit = doit[cmd](r['from'])
