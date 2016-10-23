@@ -29,6 +29,8 @@ def main():
     def log(who):
         logit('sending log on command from {0}'.format(who))
         spudemail.sendMail(recipient=r['from'], subject='Log File', file='/home/pi/spudcam/logs/runnerlog.txt')
+        spudemail.sendMail(recipient=r['from'], subject='Other Log File', file='/home/pi/spudcam/logs/cronlog')
+
 
     def temp(who):
         logit('sending temperature on command from {0}'.format(who))

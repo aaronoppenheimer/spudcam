@@ -37,9 +37,12 @@ def sendMail(recipient, subject, message=None, picture=None, file=None):
         msg.attach(msgImage)
         
     if file:
-        with open(file, 'r') as theFile:
-            msgLog=theFile.read()  
-        msg.attach(MIMEText(msgLog))
+        try:
+            with open(file, 'r') as theFile:
+                msgLog=theFile.read()  
+            msg.attach(MIMEText(msgLog))
+        except Exception as e:
+            logit(str(e))
 
     try:
         logit('sending mail to ' + recipient + ' re: ' + subject)
