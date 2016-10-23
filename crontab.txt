@@ -10,6 +10,6 @@ MAILTO=aoppenheimer@gmail.com
 * 16 * * *      /usr/bin/python /home/pi/spudcam/daily.py >/home/pi/spudcam/logs/cronlog 2>&1
 
 # run every minute
-* * * * *      /usr/bin/python /home/pi/spudcam/daily.py >/home/pi/spudcam/logs/cronlog 2>&1
+# * * * * *      /usr/bin/python /home/pi/spudcam/daily.py >/home/pi/spudcam/logs/cronlog 2>&1
 
 @reboot sh /home/pi/spudcam/launcher.sh >/home/pi/spudcam/logs/cronlog 2>&1
