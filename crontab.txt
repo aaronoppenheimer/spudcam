@@ -7,7 +7,7 @@ MAILTO=aoppenheimer@gmail.com
 * * * * *       /usr/bin/python /home/pi/spudcam/camera.py >/home/pi/spudcam/logs/cronlog 2>&1
 
 # run at noon - send a picture
-* 16 * * *      /usr/bin/python /home/pi/spudcam/daily.py >/home/pi/spudcam/logs/cronlog 2>&1
+0 16 * * *      /usr/bin/python /home/pi/spudcam/daily.py >/home/pi/spudcam/logs/cronlog 2>&1
 
 # run every minute
 # * * * * *      /usr/bin/python /home/pi/spudcam/daily.py >/home/pi/spudcam/logs/cronlog 2>&1
