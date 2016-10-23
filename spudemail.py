@@ -97,10 +97,25 @@ def getMail():
     return theMsgs
 
 def getSecret():
-    f = open('secret.txt')
-    line = f.readline().strip()
-    f.close()
-    return line
+    f = None
+    try:
+        f = open('secret.txt')
+    except:
+        pass
+
+    if f is None:
+        try:
+            f = open('/home/pi/spudcam/secret.txt')
+        except:
+            pass
+
+    if f is not None:
+        line = f.readline().strip()
+        f.close()
+        return line
+    else:
+        logit('no secret file!')
+        return ''
 
 
 def main():
