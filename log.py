@@ -2,4 +2,4 @@ import datetime
 
 
 def logit(theStr):
-    print('{0}: {1}'.format(datetime.datetime.now(),theStr))
+    print('{0}: {1}'.format(datetime.datetime.now() - datetime.timedelta(hours=5),theStr))

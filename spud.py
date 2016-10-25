@@ -10,7 +10,7 @@ VERSION = 10
 def main():
 
     spudemail.sendMail("aoppenheimer@gmail.com","started!","spud is up! Version {0}".format(VERSION))
-    logit('started at {0}'.format(datetime.datetime.now()))
+    logit('started at {0}'.format(datetime.datetime.now() - datetime.timedelta(hours=5)))
 
     def restart(who,subj=''):
         logit('restarting on command from {0}'.format(who))
@@ -76,7 +76,7 @@ def main():
             if quit: # anyone ask us to quit?
                 return
 
-        time.sleep(15)
+        time.sleep(3)
 
 
 if __name__ == "__main__":
