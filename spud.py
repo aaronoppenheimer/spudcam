@@ -5,7 +5,7 @@ import sys
 import datetime
 from log import logit
 
-VERSION = 8
+VERSION = 9
 
 def main():
 
@@ -18,7 +18,7 @@ def main():
     
     def heartbeat(who):
         logit('heatbeating on command from {0}'.format(who))
-        spudemail.sendMail(recipient=r['from'], subject='Heartbeat', message='Baboom!')
+        spudemail.sendMail(recipient=who, subject='Heartbeat', message='Baboom!')
         return False
 
     def picture(who):
