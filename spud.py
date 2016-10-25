@@ -76,7 +76,7 @@ def main():
             if quit: # anyone ask us to quit?
                 return
 
-        time.sleep(3)
+        time.sleep(10)
 
 
 if __name__ == "__main__":
