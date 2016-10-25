@@ -23,13 +23,13 @@ def main():
 
     def picture(who):
         logit('sending picture on command from {0}'.format(who))
-        spudemail.sendMail(recipient=r['from'], subject='Picture', message='Baboom!', picture='/tmp/pic.jpg')
+        spudemail.sendMail(recipient=who, subject='Picture', message='Baboom!', picture='/tmp/pic.jpg')
         return False
         
     def log(who):
         logit('sending log on command from {0}'.format(who))
-        spudemail.sendMail(recipient=r['from'], subject='Log File', file='/home/pi/spudcam/logs/runnerlog.txt')
-        spudemail.sendMail(recipient=r['from'], subject='Other Log File', file='/home/pi/spudcam/logs/cronlog')
+        spudemail.sendMail(recipient=who, subject='Log File', file='/home/pi/spudcam/logs/runnerlog.txt')
+        spudemail.sendMail(recipient=who, subject='Other Log File', file='/home/pi/spudcam/logs/cronlog')
 
 
     def temp(who):
@@ -38,7 +38,7 @@ def main():
         line=f.readline()
         f.close()
         temperature=int(line)/1000
-        spudemail.sendMail(recipient=r['from'], subject='Spud Temp', message='Temperature:{0}'.format(temperature))
+        spudemail.sendMail(recipient=who, subject='Spud Temp', message='Temperature:{0}'.format(temperature))
 
     accession = 0
     while(True):
