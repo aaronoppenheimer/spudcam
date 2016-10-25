@@ -89,8 +89,14 @@ def getMail():
             msgStringParsed = email.message_from_string(messageString)
             messageFrom = msgStringParsed['From']
             messageSubj = msgStringParsed['Subject']
-            theMsgs.append({'from':messageFrom, 'subj':messageSubj})
-                                                
+            
+            bodytext=''
+            for part in msgStringParsed.walk():
+                if part.get_content_type() == "text/plain":
+                    bodytext=part.get_payload().strip()
+
+            theMsgs.append({'from':messageFrom, 'subj':messageSubj.strip(), 'body':bodytext})
+
     server.delete_messages(response.keys())
 
     server.logout()

@@ -5,34 +5,40 @@ import sys
 import datetime
 from log import logit
 
-VERSION = 9
+VERSION = 10
 
 def main():
 
     spudemail.sendMail("aoppenheimer@gmail.com","started!","spud is up! Version {0}".format(VERSION))
     logit('started at {0}'.format(datetime.datetime.now()))
 
-    def restart(who):
+    def restart(who,subj=''):
         logit('restarting on command from {0}'.format(who))
         return True # quit the program
     
-    def heartbeat(who):
+    def heartbeat(who,subj=''):
         logit('heatbeating on command from {0}'.format(who))
-        spudemail.sendMail(recipient=who, subject='Heartbeat', message='Baboom!')
+        if subj=='':
+            subj='Heartbeat'
+
+        spudemail.sendMail(recipient=who, subject=subj, message='Heatbeat!')
         return False
 
-    def picture(who):
+    def picture(who,subj=''):
         logit('sending picture on command from {0}'.format(who))
-        spudemail.sendMail(recipient=who, subject='Picture', message='Baboom!', picture='/tmp/pic.jpg')
+        if subj=='':
+            subj='Picture'
+
+        spudemail.sendMail(recipient=who, subject=subj, message='The Picture!', picture='/tmp/pic.jpg')
         return False
         
-    def log(who):
+    def log(who,subj=''):
         logit('sending log on command from {0}'.format(who))
         spudemail.sendMail(recipient=who, subject='Log File', file='/home/pi/spudcam/logs/runnerlog.txt')
         spudemail.sendMail(recipient=who, subject='Other Log File', file='/home/pi/spudcam/logs/cronlog')
 
 
-    def temp(who):
+    def temp(who,subj=''):
         logit('sending temperature on command from {0}'.format(who))
         f=open('/sys/class/thermal/thermal_zone0/temp')
         line=f.readline()
@@ -62,15 +68,15 @@ def main():
             cmd = r['subj']
             cmd = cmd.strip().lower()
             accession = accession + 1
-            logit('{0} from: {1}   subj: {2}'.format(accession, r['from'], cmd))
+            logit('{0} from: {1}   subj: {2}   body: >{3}<'.format(accession, r['from'], cmd, r['body']))
             
             if cmd in doit.keys():
-                quit = doit[cmd](r['from'])
+                quit = doit[cmd](r['from'],r['body'])
                 
             if quit: # anyone ask us to quit?
                 return
 
-        time.sleep(10)
+        time.sleep(2)
 
 
 if __name__ == "__main__":
