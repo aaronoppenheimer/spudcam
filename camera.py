@@ -8,7 +8,7 @@ def takePicture(filename):
 	try:
 		camera.rotation = 180
 		sleep(4)
-		n=datetime.now() - timedelta(hours=5)
+		n=datetime.now() - timedelta(hours=4)
 		camera.exif_tags['IFD0.DateTime']=n.strftime("%Y:%m:%d %H:%M:%S")
 		camera.capture(filename)
 	except Exception as e:
