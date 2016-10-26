@@ -10,8 +10,8 @@ def takePicture(filename):
 		sleep(4)
 		n=datetime.now() - timedelta(hours=4)
 		camera.exif_tags['IFD0.DateTime']=n.strftime("%Y:%m:%d %H:%M:%S")
-		camera.exif_tags['ExifIFD.DateTimeOriginal']=n.strftime("%Y:%m:%d %H:%M:%S")
-		camera.exif_tags['ExifIFD.CreateDate']=n.strftime("%Y:%m:%d %H:%M:%S")
+		camera.exif_tags['IFD0.DateTimeOriginal']=n.strftime("%Y:%m:%d %H:%M:%S")
+		camera.exif_tags['IFD0.CreateDate']=n.strftime("%Y:%m:%d %H:%M:%S")
 		camera.capture(filename)
 	except Exception as e:
 		logit('camera problem: {0}'.format(str(e)))
