@@ -52,7 +52,7 @@ def main():
         try:
             recd = spudemail.getMail()
         except:
-            logit("Unexpected error: {0}".format(sys.exc_info()[0]))
+            logit("Unexpected error fetching email: {0}".format(sys.exc_info()[0]))
             recd=[]
     
         quit=False
