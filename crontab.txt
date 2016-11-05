@@ -12,4 +12,8 @@ MAILTO=aoppenheimer@gmail.com
 # run every minute
 # * * * * *      /usr/bin/python /home/pi/spudcam/daily.py >/home/pi/spudcam/logs/cronlog 2>&1
 
+# reboot every night
+0 2 * * * /sbin/reboot
+
+# start up on reboot
 @reboot sh /home/pi/spudcam/launcher.sh >/home/pi/spudcam/logs/cronlog 2>&1
