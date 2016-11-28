@@ -5,7 +5,7 @@ import sys
 import datetime
 from log import logit
 
-VERSION = 12
+VERSION = 13
 
 def main():
 
