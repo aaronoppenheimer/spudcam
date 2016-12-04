@@ -4,9 +4,8 @@ import time
 import sys
 import datetime
 from log import logit
-from subprocess import call
 
-VERSION = 14.6
+VERSION = 14.7
 
 def main():
 
