@@ -20,7 +20,8 @@ def main():
     def reboot(who, subj=''):
         logit('hard reboot on command from {0}'.format(who))
         try:
-            call('/home/pi/spudcam/reboot.sh')
+            call('ls /home/pi/spudcam > /home/pi/spudcam/logs/runnerlog.txt')
+#            call('/home/pi/spudcam/reboot.sh')
         except:
             logit("Could not call reboot script.")
         return False
