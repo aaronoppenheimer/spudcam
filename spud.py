@@ -4,8 +4,9 @@ import time
 import sys
 import datetime
 from log import logit
+from subprocess import call
 
-VERSION = 13
+VERSION = 14.1
 
 def main():
 
@@ -15,6 +16,14 @@ def main():
     def restart(who,subj=''):
         logit('restarting on command from {0}'.format(who))
         return True # quit the program
+
+    def reboot(who, subj=''):
+        logit('hard reboot on command from {0}'.format(who))
+        try:
+            call('/home/pi/spudcam/reboot.sh')
+        except:
+            logit("Could not call reboot script.")
+        return False
     
     def heartbeat(who,subj=''):
         logit('heatbeating on command from {0}'.format(who))
