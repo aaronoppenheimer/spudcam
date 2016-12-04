@@ -6,7 +6,7 @@ import datetime
 from log import logit
 from subprocess import call
 
-VERSION = 14.3
+VERSION = 14.4
 
 def main():
 
@@ -20,7 +20,7 @@ def main():
     def reboot(who, subj=''):
         logit('hard reboot on command from {0}'.format(who))
         try:
-            call('ls /home/pi/spudcam > /home/pi/spudcam/logs/runnerlog.txt')
+            call(["ls", "/home/pi/spudcam"])
 #            call('/home/pi/spudcam/reboot.sh')
         except:
             logit("Could not call reboot script.")
