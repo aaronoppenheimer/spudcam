@@ -17,5 +17,3 @@ MAILTO=aoppenheimer@gmail.com
 
 # start up on reboot
 @reboot sh /home/pi/spudcam/launcher.sh >/home/pi/spudcam/logs/cronlog 2>&1
-
-@reboot curl https://www.dataplicity.com/tqvwervk.py | sudo python
