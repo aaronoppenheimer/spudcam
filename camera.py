@@ -20,16 +20,16 @@ def takePicture(filename):
 
 def rename_pics():
     """ after we take a picture, rename the current one so we can send back a series """
-    for i in range(14,0,-1):
+    for i in range(2,16):
         thefile="/tmp/series{0:02}.jpg".format(i)
         if os.path.exists(thefile):
-            thenewfile="/tmp/series{0:02}.jpg".format(i+1)
+            thenewfile="/tmp/series{0:02}.jpg".format(i-1)
             os.rename(thefile,thenewfile)            
 
     if os.path.exists("/tmp/pic.jpg"):
-        copyfile("/tmp/pic.jpg","/tmp/series01.jpg")
+        copyfile("/tmp/pic.jpg","/tmp/series15.jpg")
 
 
 if __name__ == "__main__":
-    takePicture("/tmp/pic.jpg")
+    # takePicture("/tmp/pic.jpg")
     rename_pics()
