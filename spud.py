@@ -5,7 +5,7 @@ import sys
 import datetime
 from log import logit
 
-VERSION = 14.7
+VERSION = 14.8
 
 def main():
 
@@ -30,6 +30,14 @@ def main():
             subj='Picture'
 
         spudemail.sendMail(recipient=who, subject=subj, message='The Picture!', picture='/tmp/pic.jpg')
+        return False
+
+    def series(who,subj=''):
+        logit('sending series on command from {0}'.format(who))
+        if subj=='':
+            subj='Series'
+
+        spudemail.sendMail(recipient=who, subject=subj, message='The Picture!', series='/tmp/series{0:02}.jpg', seriesRange=range(1,16))
         return False
         
     def log(who,subj=''):
@@ -60,6 +68,7 @@ def main():
         doit = {'restart': restart,
                 'heartbeat': heartbeat,
                 'picture': picture,
+                'series': series,
                 'log': log,
                 'temp': temp
                 }

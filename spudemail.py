@@ -8,12 +8,13 @@ import email
 from log import logit
 
 from imapclient import IMAPClient
+import os.path
 from os.path import split as psplit
 
 # username = "spudwalks@gmail.com"
 username = "spudwalks@comcast.net"
 
-def sendMail(recipient, subject, message=None, picture=None, file=None):
+def sendMail(recipient, subject, message=None, picture=None, file=None, series=None, seriesRange=None):
     """this is some test documentation in the function"""
 
     #SECRET = getSecret() # gmail version
@@ -32,9 +33,20 @@ def sendMail(recipient, subject, message=None, picture=None, file=None):
     if picture:
         msgImage = getMailPicture(picture)
         # Define the image's ID as referenced above
-        msgImage.add_header('Content-ID', 'pic')
-        msgImage.add_header('Content-Disposition', 'attachment; filename="{0}"'.format(psplit(picture)[-1]))
-        msg.attach(msgImage)
+        if msgImage:
+            msgImage.add_header('Content-ID', 'pic')
+            msgImage.add_header('Content-Disposition', 'attachment; filename="{0}"'.format(psplit(picture)[-1]))
+            msg.attach(msgImage)
+
+    if series and seriesRange:
+        for i in seriesRange:
+            picname = series.format(i)
+            msgImage = getMailPicture(picname)
+            # Define the image's ID as referenced above
+            if msgImage:
+                msgImage.add_header('Content-ID', 'pic')
+                msgImage.add_header('Content-Disposition', 'attachment; filename="{0}"'.format(psplit(picname)[-1]))
+                msg.attach(msgImage)
         
     if file:
         try:
@@ -60,9 +72,11 @@ def sendMail(recipient, subject, message=None, picture=None, file=None):
         logit(str(e))
  
 def getMailPicture(filename):
-    fp = open(filename, 'rb')
-    msgImage = MIMEImage(fp.read())
-    fp.close()
+    msgImage=None
+    if os.path.exists(filename):
+        fp = open(filename, 'rb')
+        msgImage = MIMEImage(fp.read(),_subtype='jpg')
+        fp.close()
 
     return msgImage
 
