@@ -31,5 +31,5 @@ def rename_pics():
 
 
 if __name__ == "__main__":
-    # takePicture("/tmp/pic.jpg")
+    takePicture("/tmp/pic.jpg")
     rename_pics()
