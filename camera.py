@@ -4,6 +4,8 @@ from time import sleep
 from datetime import datetime, timedelta
 import os
 from shutil import copyfile
+import os
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 def takePicture(filename):
     camera = PiCamera()
@@ -21,15 +23,15 @@ def takePicture(filename):
 def rename_pics():
     """ after we take a picture, rename the current one so we can send back a series """
     for i in range(2,16):
-        thefile="/tmp/series{0:02}.jpg".format(i)
+        thefile=dir_path+"/pix/series{0:02}.jpg".format(i)
         if os.path.exists(thefile):
-            thenewfile="/tmp/series{0:02}.jpg".format(i-1)
+            thenewfile=dir_path+"/pix/series{0:02}.jpg".format(i-1)
             os.rename(thefile,thenewfile)            
 
-    if os.path.exists("/tmp/pic.jpg"):
-        copyfile("/tmp/pic.jpg","/tmp/series15.jpg")
+    if os.path.exists(dir_path+"/pix/pic.jpg"):
+        copyfile(dir_path+"/pix/pic.jpg",dir_path+"/pix/series15.jpg")
 
 
 if __name__ == "__main__":
-    takePicture("/tmp/pic.jpg")
+    takePicture(dir_path+"/pix/pic.jpg")
     rename_pics()

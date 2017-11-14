@@ -4,8 +4,10 @@ import time
 import sys
 import datetime
 from log import logit
+import os
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
-VERSION = 14.8
+VERSION = 15
 
 def main():
 
@@ -29,7 +31,7 @@ def main():
         if subj=='':
             subj='Picture'
 
-        spudemail.sendMail(recipient=who, subject=subj, message='The Picture!', picture='/tmp/pic.jpg')
+        spudemail.sendMail(recipient=who, subject=subj, message='The Picture!', picture=dir_path+'/pix/pic.jpg')
         return False
 
     def series(who,subj=''):
@@ -37,7 +39,7 @@ def main():
         if subj=='':
             subj='Series'
 
-        spudemail.sendMail(recipient=who, subject=subj, message='The Picture!', series='/tmp/series{0:02}.jpg', seriesRange=range(1,16))
+        spudemail.sendMail(recipient=who, subject=subj, message='The Picture!', series=dir_path+'/pix/series{0:02}.jpg', seriesRange=range(1,16))
         return False
         
     def log(who,subj=''):
