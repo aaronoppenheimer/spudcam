@@ -1,5 +1,6 @@
 from log import logit
 from picamera import PiCamera
+from PIL import Image, ImageDraw, ImageFont
 from time import sleep
 from datetime import datetime, timedelta
 import os
@@ -31,7 +32,27 @@ def rename_pics():
     if os.path.exists(dir_path+"/pix/pic.jpg"):
         copyfile(dir_path+"/pix/pic.jpg",dir_path+"/pix/series15.jpg")
 
+def annotate_pix():
+    # get an image
+    base = Image.open(dir_path+'/pix/pic.jpg').convert('RGBA')
+
+    # make a blank image for the text, initialized to transparent text color
+    txt = Image.new('RGBA', base.size, (255,255,255,0))
+
+    # get a font
+    fnt = ImageFont.truetype('Pillow/Tests/fonts/DejaVuSans.ttf', 28)
+    # get a drawing context
+    d = ImageDraw.Draw(txt)
+
+    # draw text, full opacity
+    dt = str(datetime.now())
+    d.text((10,60), dt, font=fnt, fill=(255,0,0,255))
+
+    out = Image.alpha_composite(base, txt)
+    out.convert('RGB').save(dir_path+"/pix/pic_date.jpg")
 
 if __name__ == "__main__":
     takePicture(dir_path+"/pix/pic.jpg")
     rename_pics()
+    annotate_pix()
+
