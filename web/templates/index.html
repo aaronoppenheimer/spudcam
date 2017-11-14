@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta Http-Equiv="Cache" content="no-cache">
+  </head>
+  <body>
+    <h1>spud!</h1>
+    <div id="pix">
+    </div>
+  </body>
+  <script>
+    function updateImage() {
+      filename = '<img src="pix/pic_date.jpg?x=' + Math.random() + '">';
+      document.getElementById('pix').innerHTML = filename;
+      setTimeout(updateImage, 60000);
+      return;
+    }
+    updateImage();
+  </script>
+</html>
