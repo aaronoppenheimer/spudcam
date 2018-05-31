@@ -4,16 +4,16 @@ SHELL=/bin/bash
 MAILTO=aoppenheimer@gmail.com
 #
 # run every minute - spud picture!
-* * * * *       /usr/bin/python /home/pi/spudcam/camera.py >/home/pi/spudcam/logs/cronlog 2>&1
+* * * * *       /usr/bin/python /home/pi/src/spudcam/camera.py >/home/pi/src/spudcam/logs/cronlog 2>&1
 
 # run at noon - send a picture
-# 0 16 * * *      /usr/bin/python /home/pi/spudcam/daily.py >/home/pi/spudcam/logs/cronlog 2>&1
+# 0 16 * * *      /usr/bin/python /home/pi/src/spudcam/daily.py >/home/pi/src/spudcam/logs/cronlog 2>&1
 
 # run every minute
-# * * * * *      /usr/bin/python /home/pi/spudcam/daily.py >/home/pi/spudcam/logs/cronlog 2>&1
+# * * * * *      /usr/bin/python /home/pi/src/spudcam/daily.py >/home/pi/src/spudcam/logs/cronlog 2>&1
 
 # reboot every night
-0 2 * * * /home/pi/spudcam/reboot.sh
+0 2 * * * /home/pi/src/spudcam/reboot.sh
 
 # start up on reboot
-@reboot sh /home/pi/spudcam/launcher.sh >/home/pi/spudcam/logs/cronlog 2>&1
+@reboot sh /home/pi/src/spudcam/launcher.sh >/home/pi/src/spudcam/logs/cronlog 2>&1

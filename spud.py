@@ -4,10 +4,14 @@ import time
 import sys
 import datetime
 from log import logit
+import Adafruit_DHT
 import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 VERSION = 15
+
+sensor = Adafruit_DHT.DHT22
+pin = 23
 
 def main():
 
@@ -50,11 +54,14 @@ def main():
 
     def temp(who,subj=''):
         logit('sending temperature on command from {0}'.format(who))
-        f=open('/sys/class/thermal/thermal_zone0/temp')
-        line=f.readline()
-        f.close()
-        temperature=int(line)/1000
-        spudemail.sendMail(recipient=who, subject='Spud Temp', message='Temperature:{0}'.format(temperature))
+#        f=open('/sys/class/thermal/thermal_zone0/temp')
+#        line=f.readline()
+#        f.close()
+#        temperature=int(line)/1000
+#        spudemail.sendMail(recipient=who, subject='Spud Temp', message='Temperature:{0}'.format(temperature))
+        humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+        spudemail.sendMail(recipient=who, subject='Spud Temp', message='Temperature:{0}, Humidity:{1}'.format(temperature, humidity))
+
 
     accession = 0
     while(True):
