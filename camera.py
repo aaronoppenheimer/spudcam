@@ -54,5 +54,5 @@ def annotate_pix():
 if __name__ == "__main__":
     takePicture(dir_path+"/pix/pic.jpg")
     rename_pics()
-    annotate_pix()
+#    annotate_pix()
 
