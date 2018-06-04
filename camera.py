@@ -52,8 +52,11 @@ def annotate_pix():
     out = Image.alpha_composite(base, txt)
     out.convert('RGB').save(dir_path+"/pix/pic_date.jpg")
 
-if __name__ == "__main__":
+def doPicture():
     takePicture(dir_path+"/pix/pic.jpg")
     rename_pics()
 #    annotate_pix()
+    
 
+if __name__ == "__main__":
+    doPicture()
