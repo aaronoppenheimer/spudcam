@@ -90,3 +90,8 @@ ENV/
 
 # emacs crud
 *~
+
+
+pix
+logs
+secret.txt
