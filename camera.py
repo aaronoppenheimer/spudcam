@@ -11,7 +11,8 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 def takePicture(filename):
     camera = PiCamera()
     try:
-        camera.rotation = 180
+#        camera.rotation = 180
+        camera.rotation = 0
         sleep(4)
         n=datetime.now() - timedelta(hours=4)
         camera.exif_tags['IFD0.DateTime']=n.strftime("%Y:%m:%d %H:%M:%S")
