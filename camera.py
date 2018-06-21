@@ -32,6 +32,11 @@ def rename_pics():
 
     if os.path.exists(dir_path+"/pix/pic.jpg"):
         copyfile(dir_path+"/pix/pic.jpg",dir_path+"/pix/series15.jpg")
+        # how many files are in the allpix dir?
+        numfiles=len([name for name in os.listdir(dir_path+"/pix/allpix")])
+        copyfile(dir_path+"/pix/pic.jpg",dir_path+"/pix/allpix/pic"+str(numfiles+1).zfill(5)+".jpg")
+#        dated_name = str(datetime.now()).replace(" ","_").replace(":","_")
+#        copyfile(dir_path+"/pix/pic.jpg",dir_path+"/pix/allpix/pic"+dated_name+".jpg")
 
 def annotate_pix():
     # get an image
