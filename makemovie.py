@@ -23,6 +23,6 @@ if args.name:
 	print('filename is {0}'.format(args.name))
 	name = args.name
 
-command = 'ffmpeg {0} {1} -i pix/allpix/pic%05d.jpg movie/{2}.m4v'.format(start_opt, frames_opt, name)
+command = 'ffmpeg {0} -i pix/allpix/pic%05d.jpg {1} movie/{2}.m4v'.format(start_opt, frames_opt, name)
 print('command: {0}'.format(command))
 subprocess.call(command.split())
