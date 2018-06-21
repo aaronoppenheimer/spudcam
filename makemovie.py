@@ -2,6 +2,7 @@ import subprocess
 import argparse
 
 parser = argparse.ArgumentParser()
+
 parser.add_argument("-s", "--start", help="frame at which to start (leave out to start from 0)")
 parser.add_argument("-f", "--frames", help="frames to include (leave out to use all)")
 parser.add_argument("-n", "--name", help="name of output file")
