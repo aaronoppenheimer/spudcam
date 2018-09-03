@@ -11,6 +11,8 @@ def main():
         with open('/home/pi/src/spudcam/logs/weblog.txt', 'a') as f:
             subprocess.Popen(["python","-u","/home/pi/src/spudcam/app.py"], stdout=f, stderr=f)
         with open('/home/pi/src/spudcam/logs/runnerlog.txt', 'a') as f:
+            subprocess.Popen(["python","-u","/home/pi/src/spudcam/schedule_sunrise.py"], stdout=f, stderr=f)
+        with open('/home/pi/src/spudcam/logs/runnerlog.txt', 'a') as f:
             subprocess.call(["python","-u","/home/pi/src/spudcam/spud.py"], stdout=f, stderr=f)
 
 if __name__ == "__main__":
