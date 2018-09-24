@@ -1,7 +1,7 @@
 # use /bin/bash to run commands, instead of the default /bin/sh
 SHELL=/bin/bash
 # mail any output to `paul', no matter whose crontab this is
-MAILTO=aoppenheimer@gmail.com
+MAILTO=spud@aoppenheimer.com
 #
 # run every minute - spud picture!
 * * * * *       /usr/bin/python /home/pi/src/spudcam/camera.py >/home/pi/src/spudcam/logs/cronlog 2>&1

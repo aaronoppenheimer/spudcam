@@ -140,7 +140,7 @@ def getSecret():
 
 def main():
     """ test the email connection """
-    sendMail('aoppenheimer@gmail.com','Email Test',"woo!")
+    sendMail('spud@aoppenheimer.com','Email Test',"woo!")
 
 
 if __name__ == "__main__":

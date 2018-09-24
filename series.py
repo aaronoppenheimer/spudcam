@@ -9,7 +9,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 def main():
     """ send daily image """
     logit('sending daily picture')
-    spudemail.sendMail(recipient='spud@aoppenheimer.com', subject="Today's Picture", message='Baboom!', picture=dir_path+'/pix/pic.jpg')
+    spudemail.sendMail(recipient='spud@aoppenheimer.com', subject="Sunrise", message='The Pictures!', series=dir_path+'/pix/series{0:02}.jpg', seriesRange=range(1,16))
     
 if __name__ == "__main__":
     main()    

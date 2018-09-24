@@ -15,7 +15,7 @@ pin = 23
 
 def main():
 
-    spudemail.sendMail("aoppenheimer@gmail.com","started!","spud is up! Version {0}".format(VERSION))
+    spudemail.sendMail("spud@aoppenheimer.com","started!","spud is up! Version {0}".format(VERSION))
     logit('started at {0}'.format(datetime.datetime.now() - datetime.timedelta(hours=4)))
 
     def restart(who,subj=''):
