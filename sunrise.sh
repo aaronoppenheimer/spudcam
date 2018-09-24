@@ -1,2 +1,2 @@
 #!/bin/sh
-python /home/pi/src/spudcam/daily.py
+python /home/pi/src/spudcam/series.py
