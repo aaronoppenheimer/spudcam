@@ -8,7 +8,7 @@ def get_data():
     if r.status_code==200:
         w = r.json()
 	t = w["sun_phase"]["sunrise"]
-        ts = "{0}:{1}am".format(t['hour'],t['minute'])
+        ts = "{0}:{1}am".format(t['hour'],int(t['minute'])+7)
     return ts,r.status_code
 
 def main():
