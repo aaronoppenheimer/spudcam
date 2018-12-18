@@ -75,7 +75,7 @@ def getMailPicture(filename):
     msgImage=None
     if os.path.exists(filename):
         fp = open(filename, 'rb')
-        msgImage = MIMEImage(fp.read(),_subtype='jpg')
+        msgImage = MIMEImage(fp.read(),_subtype='jpeg')
         fp.close()
 
     return msgImage
