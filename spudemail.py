@@ -17,8 +17,8 @@ username = "spudwalks@comcast.net"
 def sendMail(recipient, subject, message=None, picture=None, file=None, series=None, seriesRange=None):
     """this is some test documentation in the function"""
 
-    #SECRET = getSecret() # gmail version
-    SECRET = "1!{0}".format(getSecret()[:13])
+    SECRET = getSecret() # gmail version
+    #SECRET = "1!{0}".format(getSecret()[:13])
 
     password = SECRET
 
@@ -83,7 +83,7 @@ def getMailPicture(filename):
 def getMail():
 
     # SECRET = getSecret()
-    SECRET = "1!{0}".format(getSecret()[:13])
+    SECRET = "{0}".format(getSecret())
 
 
     # server = IMAPClient("imap.gmail.com", use_uid=True, ssl=True)

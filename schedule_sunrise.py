@@ -15,13 +15,13 @@ def get_data():
         w = r.json()
 	t = dateutil.parser.parse(w["results"]["sunrise"])
 
-        h1 = t.hour - 5
+        h1 = t.hour - 4
         m1 = t.minute + 7
         if m1 >= 60:
             m1 = m1 - 60
             h1= h1 + 1
 
-        h2 = t.hour - 5
+        h2 = t.hour - 4
         m2 = t.minute + 23
         if m2 >= 60:
             m2 = m2 - 60
