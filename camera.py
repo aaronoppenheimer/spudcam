@@ -10,6 +10,8 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 KEEPALL = False
 
+MAXFRAMES = 30
+
 def takePicture(filename):
     camera = PiCamera(resolution=(1296,730))
     try:
@@ -18,7 +20,7 @@ def takePicture(filename):
         sleep(4)
         n=datetime.now() - timedelta(hours=4)
         camera.exif_tags['IFD0.DateTime']=n.strftime("%Y:%m:%d %H:%M:%S")
-        camera.capture(filename)
+        camera.capture(filename, quality=30)
     except Exception as e:
         logit('camera problem: {0}'.format(str(e)))
     finally:
@@ -26,14 +28,14 @@ def takePicture(filename):
 
 def rename_pics():
     """ after we take a picture, rename the current one so we can send back a series """
-    for i in range(2,16):
+    for i in range(2,MAXFRAMES+1):
         thefile=dir_path+"/pix/series{0:02}.jpg".format(i)
         if os.path.exists(thefile):
             thenewfile=dir_path+"/pix/series{0:02}.jpg".format(i-1)
             os.rename(thefile,thenewfile)            
 
     if os.path.exists(dir_path+"/pix/pic.jpg"):
-        copyfile(dir_path+"/pix/pic.jpg",dir_path+"/pix/series15.jpg")
+        copyfile(dir_path+"/pix/pic.jpg",dir_path+"/pix/series"+str(MAXFRAMES)+".jpg")
         if KEEPALL:
             # how many files are in the allpix dir?
             numfiles=len([name for name in os.listdir(dir_path+"/pix/allpix")])

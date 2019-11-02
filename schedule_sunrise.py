@@ -42,7 +42,7 @@ def main():
     ts1,ts2,sc=get_data()
     if sc == 200:
         if ts1:
-            subprocess.call(["at",ts1,"-f","/home/pi/src/spudcam/sunrise.sh"])
+#            subprocess.call(["at",ts1,"-f","/home/pi/src/spudcam/sunrise.sh"])
             subprocess.call(["at",ts2,"-f","/home/pi/src/spudcam/sunrise.sh"])
         
 if __name__ == "__main__":
