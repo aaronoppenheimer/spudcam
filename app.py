@@ -6,6 +6,11 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/sunrise')
+def sunrise():
+    print('sunrise')
+    return app.send_static_file('pix/sunrise.mp4')
+
 @app.route('/<path:path>')
 def static_proxy(path):
     print(path)
